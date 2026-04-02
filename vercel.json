@@ -12,6 +12,10 @@
       "dest": "/logo.png"
     },
     {
+      "src": "/logo-full.png",
+      "dest": "/logo-full.png"
+    },
+    {
       "src": "/favicon.svg",
       "dest": "/favicon.svg"
     },
