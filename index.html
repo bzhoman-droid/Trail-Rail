@@ -27,12 +27,12 @@
   nav {
     position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 24px 52px;
+    padding: 20px 52px;
     transition: all 0.5s cubic-bezier(.4,0,.2,1);
   }
   nav.scrolled {
     background: rgba(8,8,8,0.97);
-    padding: 15px 52px;
+    padding: 12px 52px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     backdrop-filter: blur(12px);
   }
@@ -42,7 +42,7 @@
     text-decoration: none; color: var(--white); text-transform: uppercase;
     display: flex; align-items: center;
   }
-  .nav-logo img { height: 44px; width: auto; object-fit: contain; }
+  .nav-logo img { height: 56px; width: auto; object-fit: contain; }
   .nav-links { display: flex; gap: 38px; list-style: none; }
   .nav-links a {
     color: rgba(255,255,255,0.7); text-decoration: none;
@@ -59,6 +59,41 @@
     transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--g1); }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); transition: all 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(8,8,8,0.98); z-index: 190;
+    flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--white); text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 32px; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--g2); }
+  .mobile-menu .mob-cta {
+    background: var(--white); color: var(--black);
+    padding: 16px 48px; border: none; cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-top: 12px;
+  }
 
   /* HERO */
   .hero {
@@ -88,16 +123,16 @@
   }
   .hero-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900; font-size: clamp(72px, 12vw, 150px);
+    font-weight: 900; font-size: clamp(64px, 12vw, 150px);
     line-height: 0.88; letter-spacing: 0.05em; text-transform: uppercase;
     margin-bottom: 26px;
     opacity: 0; transform: translateY(30px);
     transition: all 0.9s 0.4s cubic-bezier(.4,0,.2,1);
   }
   .hero-sub {
-    font-weight: 300; font-size: clamp(13px, 1.8vw, 17px);
-    color: rgba(255,255,255,0.55); letter-spacing: 0.07em;
-    max-width: 460px; margin: 0 auto 44px;
+    font-weight: 300; font-size: clamp(14px, 1.8vw, 17px);
+    color: rgba(255,255,255,0.55); letter-spacing: 0.05em;
+    max-width: 460px; margin: 0 auto 44px; line-height: 1.6;
     opacity: 0; transform: translateY(20px);
     transition: all 0.9s 0.6s cubic-bezier(.4,0,.2,1);
   }
@@ -113,18 +148,18 @@
 
   .btn-primary {
     background: var(--white); color: var(--black);
-    padding: 14px 38px; border: none; cursor: pointer;
+    padding: 16px 38px; border: none; cursor: pointer;
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
-    transition: background 0.2s;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    transition: background 0.2s; min-width: 160px;
   }
   .btn-primary:hover { background: var(--g1); }
   .btn-outline {
     background: transparent; color: var(--white);
-    padding: 14px 38px; border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
+    padding: 16px 38px; border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
-    transition: border-color 0.2s;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    transition: border-color 0.2s; min-width: 160px;
   }
   .btn-outline:hover { border-color: rgba(255,255,255,0.8); }
 
@@ -160,7 +195,6 @@
   .delay-1 { transition-delay: 0.1s !important; }
   .delay-2 { transition-delay: 0.22s !important; }
   .delay-3 { transition-delay: 0.36s !important; }
-  .delay-4 { transition-delay: 0.5s !important; }
 
   /* STATS STRIP */
   .stats-strip {
@@ -186,7 +220,7 @@
   }
   .sec-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900; font-size: clamp(38px, 5.5vw, 68px);
+    font-weight: 900; font-size: clamp(36px, 5.5vw, 68px);
     line-height: 0.95; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 22px;
   }
   .sec-body {
@@ -275,7 +309,7 @@
   }
   .specs-list li:first-child { border-top: 1px solid var(--g1); }
   .spec-name { font-weight: 500; letter-spacing: 0.03em; }
-  .spec-val { color: var(--g3); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .spec-val { color: var(--g3); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; max-width: 55%; }
 
   /* PHOTO GRID */
   .photo-grid-wrap { padding: 4px; background: var(--black); }
@@ -289,7 +323,7 @@
   .about-inner { max-width: 860px; text-align: center; }
   .about-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900; font-size: clamp(42px, 7vw, 88px);
+    font-weight: 900; font-size: clamp(38px, 7vw, 88px);
     text-transform: uppercase; letter-spacing: 0.05em; line-height: 0.95; margin-bottom: 28px;
   }
   .about-body {
@@ -314,21 +348,21 @@
     color: rgba(255,255,255,0.18); text-align: center;
   }
   .logo-ph-txt em { display: block; font-style: normal; font-size: 24px; margin-bottom: 6px; opacity: 0.2; }
-  .foot-brand img { height: 48px; width: auto; object-fit: contain; }
+  .foot-brand img { height: 64px; width: auto; object-fit: contain; }
 
   /* NOTIFY */
   .notify-sec { background: var(--off-white); color: var(--black); padding: 88px 48px; text-align: center; }
   .notify-sub { color: #777; font-size: 15px; margin-bottom: 38px; font-weight: 300; }
   .email-row { display: flex; gap: 0; max-width: 460px; margin: 0 auto; }
   .email-row input {
-    flex: 1; padding: 14px 20px; border: 1px solid var(--g1);
+    flex: 1; padding: 16px 20px; border: 1px solid var(--g1);
     background: var(--white); font-family: 'Barlow', sans-serif;
     font-size: 14px; outline: none; color: var(--black);
   }
   .email-row input::placeholder { color: #aaa; }
   .email-row button {
     background: var(--black); color: var(--white);
-    padding: 14px 28px; border: none; cursor: pointer;
+    padding: 16px 28px; border: none; cursor: pointer;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
     transition: background 0.2s;
@@ -349,32 +383,100 @@
   .socials a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
   .socials a:hover { color: var(--white); }
 
-  /* MOBILE */
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
-    nav { padding: 18px 24px; }
-    nav.scrolled { padding: 14px 24px; }
-    .nav-links { display: none; }
-    .feat-full .text-block { padding: 0 28px; max-width: 100%; }
-    .feat-full.right .text-block { margin-left: 0; }
-    .specs-inner { grid-template-columns: 1fr; gap: 48px; }
-    .photo-grid { grid-template-columns: 1fr 1fr; }
-    .gc.tall { grid-row: span 1; }
-    .feat-cards { grid-template-columns: 1fr; }
-    .lifestyle-cap { padding: 32px 28px; }
-    .foot-top { flex-direction: column; }
-    .foot-links { flex-direction: column; gap: 32px; }
-    .stats-strip { gap: 36px; padding: 40px 24px; }
+    /* Nav */
+    nav { padding: 16px 24px; }
+    nav.scrolled { padding: 12px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-logo img { height: 36px; }
+
+    /* Hero */
+    .hero { min-height: 100svh; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; }
+    .hero-sub { font-size: 14px; padding: 0 8px; }
+    .hero-btns { flex-direction: column; align-items: center; gap: 12px; }
+    .btn-primary, .btn-outline { width: 100%; max-width: 280px; padding: 18px 24px; font-size: 13px; }
+    .scroll-hint { display: none; }
+
+    /* Stats */
+    .stats-strip { gap: 0; padding: 0; flex-direction: column; }
+    .stat-item { padding: 28px 24px; width: 100%; border-bottom: 1px solid var(--g1); }
+    .stat-num { font-size: 36px; }
     .strip-div { display: none; }
-    .about-sec, .notify-sec, .specs-sec, .feat-grid-sec, .logo-sec { padding-left: 24px; padding-right: 24px; }
+
+    /* Feature full bleed */
+    .feat-full { height: auto; min-height: 0; flex-direction: column; }
+    .feat-full .img-area { position: relative; height: 52vw; min-height: 220px; width: 100%; }
+    .feat-full .img-area::after { background: linear-gradient(to bottom, transparent 40%, rgba(8,8,8,0.95) 100%) !important; }
+    .feat-full .text-block,
+    .feat-full.right .text-block { margin: 0; max-width: 100%; padding: 40px 24px 52px; position: relative; z-index: 3; }
+    .feat-full .puz { position: absolute; inset: 0; }
+
+    /* Features grid */
+    .feat-grid-sec { padding: 64px 24px; }
+    .feat-cards { grid-template-columns: 1fr; }
+    .feat-card { padding: 36px 28px; }
+
+    /* Lifestyle */
+    .lifestyle-sec { height: 60vw; min-height: 280px; }
+    .lifestyle-cap { padding: 28px 24px; font-size: clamp(24px, 7vw, 40px); }
+
+    /* Specs */
+    .specs-sec { padding: 64px 24px; }
+    .specs-inner { grid-template-columns: 1fr; gap: 40px; }
+    .spec-val { font-size: 11px; }
+
+    /* Photo grid */
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .gc.tall { grid-row: span 1; aspect-ratio: 1; }
+    .gc .puz { min-height: 160px; }
+
+    /* About */
+    .about-sec { padding: 72px 24px; }
+    .about-title { font-size: clamp(36px, 10vw, 72px); }
+    .about-body { font-size: 15px; }
+
+    /* Logo */
+    .logo-sec { padding: 64px 24px; }
+
+    /* Notify */
+    .notify-sec { padding: 64px 24px; }
+    .email-row { flex-direction: column; }
+    .email-row input { width: 100%; border-bottom: none; }
+    .email-row button { width: 100%; padding: 18px; font-size: 13px; }
+
+    /* Footer */
+    footer { padding: 48px 24px 28px; }
+    .foot-top { flex-direction: column; gap: 36px; }
+    .foot-links { flex-direction: column; gap: 28px; }
+    .foot-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .foot-brand img { height: 40px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(56px, 18vw, 90px); }
+    .photo-grid { grid-template-columns: 1fr; }
+    .gc.tall { aspect-ratio: 4/3; }
   }
 </style>
 </head>
 <body>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#product" onclick="closeMobileMenu()">Product</a>
+  <a href="#features" onclick="closeMobileMenu()">Features</a>
+  <a href="#specs" onclick="closeMobileMenu()">Specs</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <button class="mob-cta" onclick="closeMobileMenu();document.querySelector('.notify-sec').scrollIntoView({behavior:'smooth'})">Notify Me</button>
+</div>
+
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="nav-logo" id="navLogoWrap">
-    <span id="navLogoText"><img src="logo.png" style="height:44px;width:auto;object-fit:contain;"/></span>
+    <span id="navLogoText"><img src="logo.png" style="height:56px;width:auto;object-fit:contain;"/></span>
   </a>
   <ul class="nav-links">
     <li><a href="#product">Product</a></li>
@@ -383,6 +485,9 @@
     <li><a href="#about">About</a></li>
   </ul>
   <button class="nav-cta" onclick="document.querySelector('.notify-sec').scrollIntoView({behavior:'smooth'})">Notify Me</button>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -620,7 +725,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="foot-top">
-    <div class="foot-brand" id="footBrand"><img src="logo.png" style="height:32px;width:auto;object-fit:contain;"/></div>
+    <div class="foot-brand" id="footBrand"><img src="logo.png" style="height:64px;width:auto;object-fit:contain;"/></div>
     <div class="foot-links">
       <div class="foot-col">
         <h4>Product</h4>
@@ -667,17 +772,33 @@
   }, { threshold: 0.12 });
   revEls.forEach(el => io.observe(el));
 
-  // Parallax
-  window.addEventListener('scroll', () => {
-    const sy = scrollY;
-    const hz = document.getElementById('heroZone');
-    if (hz) hz.style.transform = `translateY(${sy * 0.35}px)`;
-    document.querySelectorAll('.lifestyle-sec .puz').forEach(puz => {
-      const rect = puz.closest('section').getBoundingClientRect();
-      const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * 0.15;
-      puz.style.transform = `translateY(${offset}px)`;
-    });
-  }, { passive: true });
+  // Parallax (desktop only)
+  if (window.innerWidth > 768) {
+    window.addEventListener('scroll', () => {
+      const sy = scrollY;
+      const hz = document.getElementById('heroZone');
+      if (hz) hz.style.transform = `translateY(${sy * 0.35}px)`;
+      document.querySelectorAll('.lifestyle-sec .puz').forEach(puz => {
+        const rect = puz.closest('section').getBoundingClientRect();
+        const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * 0.15;
+        puz.style.transform = `translateY(${offset}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // Mobile menu
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
   // Image upload
   function uploadImg(input, id) {
@@ -693,40 +814,34 @@
     r.readAsDataURL(f);
   }
 
-  // Logo upload — populates nav, footer, and logo section
+  // Logo upload
   function uploadLogo(input) {
     const f = input.files[0]; if (!f) return;
     const r = new FileReader();
     r.onload = e => {
       const src = e.target.result;
-
-      // Logo section
       document.getElementById('logoPh').style.display = 'none';
       const area = document.getElementById('logoArea');
       let img = area.querySelector('img');
       if (!img) { img = document.createElement('img'); area.appendChild(img); }
       img.src = src;
-
-      // Nav
       const navText = document.getElementById('navLogoText');
       navText.innerHTML = '';
       const navImg = document.createElement('img');
       navImg.src = src;
-      navImg.style.cssText = 'height:28px;width:auto;object-fit:contain;';
+      navImg.style.cssText = 'height:56px;width:auto;object-fit:contain;';
       navText.appendChild(navImg);
-
-      // Footer
       const footBrand = document.getElementById('footBrand');
       footBrand.innerHTML = '';
       const footImg = document.createElement('img');
       footImg.src = src;
-      footImg.style.cssText = 'height:32px;width:auto;object-fit:contain;';
+      footImg.style.cssText = 'height:64px;width:auto;object-fit:contain;';
       footBrand.appendChild(footImg);
     };
     r.readAsDataURL(f);
   }
 
-  // Smooth scroll for nav links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const t = document.querySelector(a.getAttribute('href'));
