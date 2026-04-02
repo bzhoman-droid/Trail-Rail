@@ -502,7 +502,10 @@
   </div>
   <div class="hero-content" id="heroContent">
     <p class="hero-eyebrow">Overland Gear &nbsp;·&nbsp; Built for the Wild</p>
-    <h1 class="hero-title">Trail<br/>Rail</h1>
+    <div class="hero-logo-upload" id="heroLogoZone" onclick="document.getElementById('heroLogoInput').click()">
+      <input type="file" id="heroLogoInput" accept="image/png" style="display:none;" onchange="uploadHeroLogo(this)"/>
+      <img id="heroLogoImg" src="logo-full.png" alt="Trail Rail" style="max-width:420px;width:90vw;object-fit:contain;margin-bottom:8px;"/>
+    </div>
     <p class="hero-sub">Mount it. Slide it. Take it with you. The low-profile rail system that ends permanent case mounting for good.</p>
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.querySelector('.notify-sec').scrollIntoView({behavior:'smooth'})">Get Notified</button>
@@ -789,6 +792,14 @@
     document.getElementById('mobileMenu').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
     document.body.style.overflow = '';
+  }
+
+  // Hero logo upload
+  function uploadHeroLogo(input) {
+    const f = input.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = e => { document.getElementById('heroLogoImg').src = e.target.result; };
+    r.readAsDataURL(f);
   }
 
   // Image upload
