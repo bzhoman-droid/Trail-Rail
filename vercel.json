@@ -7,21 +7,19 @@
     }
   ],
   "routes": [
-    {
-      "src": "/logo.png",
-      "dest": "/logo.png"
-    },
-    {
-      "src": "/logo-full.png",
-      "dest": "/logo-full.png"
-    },
-    {
-      "src": "/favicon.svg",
-      "dest": "/favicon.svg"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/logo.png", "dest": "/logo.png" },
+    { "src": "/logo-full.png", "dest": "/logo-full.png" },
+    { "src": "/favicon.svg", "dest": "/favicon.svg" },
+    { "src": "/hero.jpg", "dest": "/hero.jpg" },
+    { "src": "/feat1.jpg", "dest": "/feat1.jpg" },
+    { "src": "/feat2.jpg", "dest": "/feat2.jpg" },
+    { "src": "/life1.jpg", "dest": "/life1.jpg" },
+    { "src": "/life2.jpg", "dest": "/life2.jpg" },
+    { "src": "/grid1.jpg", "dest": "/grid1.jpg" },
+    { "src": "/grid2.jpg", "dest": "/grid2.jpg" },
+    { "src": "/grid3.jpg", "dest": "/grid3.jpg" },
+    { "src": "/grid4.jpg", "dest": "/grid4.jpg" },
+    { "src": "/grid5.jpg", "dest": "/grid5.jpg" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
